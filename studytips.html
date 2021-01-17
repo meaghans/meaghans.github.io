@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <br>
+  <title>Study Tips</title>
+  <style>
+  h1{
+    text-align:center;
+    margin-top:-50px;
+  }
+  h2{
+    text-align:left;
+    margin-top:10px;
+    margin-left:0px;
+  }
+  h3{
+    text-align:center;
+    margin-top:10px;
+  }
+  p{
+    text-align:justify;
+    text-align:left;
+  }
+  body{
+      background-color: #FFEFD5;
+      overflow-x:hidden;
+    }
+img{
+      display:block;
+      margin-left:auto;
+      margin-right:auto;
+}
+.images{
+      margin-left:330px;
+      margin-top:-20px;
+      column-count:5;
+      column-gap:120px;
+}
+.timerCard{
+  width: 50%;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  float: right;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #A3D6D4;
+  border-radius: 12px;
+}
+
+#countdown{
+  font-size: 30px;
+  text-align: center;
+}
+button{
+  background-color: #A3D6D4;
+  color: black;
+  border: 2px solid white;
+  border-radius: 12px;
+}
+button:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+#timeRemaining{
+  background-color: #A3D6D4;
+  width: 40%;
+  height: 30px;
+  position: #F6F1C4;
+  margin-top: 5px;
+}
+#timePassed{
+  background-color: #D2EACB;
+  width: 0px;
+  height: 30px;
+  margin-top: 5px;
+  position: absolute;
+}
+
+  </style>
+</head>
+<body>
+  <div style="background-color: #FFEFD5" class="jumbotron test-center">
+      <h1>Study Tips</h1>
+      <h3>Productivity, Health, and Positivity</h3>
+      <br>
+      <div class="images">
+          <img src="heart.gif" alt="Heart" style="width:45%;height:45%">
+          <img src="pencil.gif" alt="Pencil" style="width:45%;height:45%">
+          <img src="audio.gif" alt="Spotify" style="width:45%;height:45%">
+          <img src="lightbulb.gif" alt="LightBulb" style="width:45%;height:45%">
+      </div>
+      <a href="homepage.html"><div style="position:relative; left:390px;top:2px;">Home</div></a>
+      <a href="studytips.html"><div style="position:relative; left:653px;bottom:23px;">Study Tips</div></a>
+      <a href="music.html"><div style="position:relative; left:958px;bottom:47px;">Music</div></a>
+      <a href="brainbreak.html"><div style="position:relative; left:1224px;bottom:73px;">Brain Break</div></a>
+      <div id= "center"class="container" style="margin-top:-40px;">
+
+      <div class="row">
+        <div class="column" style="background-color:#FFEFD5;">
+          <h2>Learning How to Study</h2>
+          <p>Learning how to properly and efficiently study is key to success. Many people, after studying for a consistent amount of time, have been able to activate the "flow" state of mind. The "flow" state of mind occurs when someone becomes completely focused on the task at hand. Once you activate this state of mind, productivity, concentration, and clarity naturally increase.</p>
+          <p>This state of mind is one of the most effective ways to study, but being able to put yourself in the "flow" state of mind is no easy task.</p>
+          <h2>Flow Technique - Our Study Timer</h2>
+          <p>Given that we promote being in the "flow of things" in order to study and work more efficiently, we have created an additional study timer to help activate your ability to hyperfocus, remain in the zone, and achieve the "flow" state of mind. With our study timer, users will be able to utilize it by setting aside at least 90 minutes in total. Once 45 minutes has been achieved, the pop-up will turn a light shade of green, which indicates that your "flow" should begin. </p>
+          <p> After the 45 minute mark, the pop-up will continue going until 90 minutes. During this time, users will completely focus on the task at hand, shutting down all other distractions for ultimate efficiency and clarity.</p>
+          <h2>Flow Technique Benefits</h2>
+          <div class="column" style-"background-color:#FFEFD5;">
+            <p>➼ Increase enjoyment and motivation.</p>
+            <p>➼ Increase engagement and involvement with the task at hand.</p>
+            <p>➼ Greater intrinsic motivation.</p>
+            <p>➼ Better emotional regulation.</p>
+            <p>➼ Improved performance and creativity.</p>
+            <p><img id='notepad_image' src="notepad.gif" alt="Notepad"
+                    style= "width:280px;height:295px;margin-right:400px;margin-top:-300px;display:block;"></p>
+            <p><img id='check_image' src="check.gif" alt="Check"
+                    style= "width:280px;height:295px;margin-right:-40px;margin-top:-310px;display:block;"></p>
+          </div>
+          <div class = "timerCard">
+            <b style- "font-size: 35;"><center> Flow Technique Study Timer </center></b>
+            <p id = "countdown"><center></center></p>
+            <button onclick= "startTimer()"> Begin 90 minute study session!</button>
+            <div id = "timeRemaining"><div id = "timePassed"></div></div>
+          </div>
+
+            <script>
+
+
+            var myTime;
+
+            function startTimer(){
+              progressBar();
+              myTime = setInterval(updateCountdown, 1000);
+              var startingMinutes = 90;
+              var time = startingMinutes * 60;
+
+              function updateCountdown() {
+
+                var minutes = Math.floor(time / 60);
+                var seconds = time % 60;
+
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                document.getElementById('countdown').innerHTML = `${minutes} : ${seconds}`;
+                time--;
+  }
+}
+
+function progressBar(){
+  var bar = document.getElementById('timePassed');
+  var width = 0;
+  var id = setInterval(frame, (90 * 60 * 1000) / 40);
+  function frame(){
+    if (width == 40){
+      clearInterval(id);
+    }
+    else {
+      width++;
+      bar.style.width = width + '%';
+    }
+  }
+}
+
+            var changeColor = setInterval(setColor, 45 * 60 * 1000);
+
+            function setColor(){
+              var x = document.body;
+              x.style.backgroundColor = x.style.backgroundColor == "#D2EACB" ? "#7fe8ff" : "#D2EACB";
+            }
+
+            setTimeout(function(){alert("45 minutes remaining in study session!")}, 45 * 60 * 1000);
+            </script>
+          </div>
+
+          <h2>Importance of Breaks</h2>
+          <p>Although Nehemie and Meaghan are very strong supporters of obtaining the "flow" state of mind, it is also important to note how breaks between study or work sessions can benefit you! If you are constantly working and studying, then you may easily feel overwhelmed or burned out. In order to avoid those catastrophes from happening, please make sure to take a break if you are feeling tired or stressed.</p>
+          <p>Taking small breaks can provide many, many benefits to our health. Small, relaxing breaks in between study and work sessions can help you recover from stress while restoring energy, decreasing fatigue, and even assisting in lowering the risk of developing sleep disorders and cardiovascular disease!</p>
+        </div>
+      </div>
+
+  </div>
+
+</body>
+</html>
